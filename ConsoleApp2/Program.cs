@@ -13,44 +13,78 @@ namespace Homework_Warehouse_
         static void Main(string[] args)
         {
             String continueProg, expirationDate;
-            int menuNumber, basketWeight, simplePlayer, notepadPlayer, uberPlayer,uberNumber;
+            int cheatPlayer, basketWeight, simplePlayer, notepadPlayer, uberPlayer, uberNumber = 40, countNotepadMass = 0;
             double priceProduct;
-            uberNumber = 40;
+           
             continueProg = "yes";
             while (continueProg == "yes")
             {
-                int[] matrix = new int[400];
+                int[] mainMass = new int[400];
                 for (int j = 0; j < 400; j++)
                 {
                     //matrix[j] = value;
-                
-                Console.WriteLine("=========Game=========");
-                Console.WriteLine("Write basket number:");
-                basketWeight = CheckInt();
 
-                simplePlayer = Players.SimplePlayer();
-                if (basketWeight == simplePlayer)
-                {
-                    break;
-                    Console.WriteLine("Simple Player Win.");
-                    Console.ReadKey();
-                }
-                    matrix[j] = simplePlayer;
+                    Console.WriteLine("=========Game=========");
+                    Console.WriteLine("Write basket number:");
+                    basketWeight = CheckInt();
+
+                    simplePlayer = Players.SimplePlayer();
+                    if (basketWeight == simplePlayer)
+                    {
+                        
+                        Console.WriteLine("Simple Player Win.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    mainMass[j] = simplePlayer;
                     j++;
 
-                uberPlayer = Players.UberPlayer(uberNumber);
+                    uberPlayer = Players.UberPlayer(uberNumber);
 
-                if (basketWeight == uberPlayer)
-                {
-                    break;
-                    Console.WriteLine("Uber Player Win.");
-                    Console.ReadKey();
-                }
-                matrix[j] = uberPlayer;
-                uberNumber++;
-                j++;
+                    if (basketWeight == uberPlayer)
+                    {
+                        
+                        Console.WriteLine("Uber Player Win.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    mainMass[j] = uberPlayer;
+                    uberNumber++;
+                    j++;
 
 
+                    int[] notepadMass = new int[400];
+                    notepadPlayer = Players.notepadPlayer(notepadMass); 
+                    
+
+                    if (basketWeight == notepadPlayer)
+                    {
+                        
+                        Console.WriteLine("Notepad Player Win.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    notepadMass[countNotepadMass] = uberPlayer;
+                    mainMass[j] = uberPlayer;
+                    countNotepadMass++;
+                    j++;
+
+
+                    int[] notepadMass = new int[400];
+                    cheatPlayer = Players.notepadPlayer(notepadMass);
+
+
+                    if (basketWeight == notepadPlayer)
+                    {
+
+                        Console.WriteLine("Notepad Player Win.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    notepadMass[countNotepadMass] = uberPlayer;
+                    mainMass[j] = uberPlayer;
+                    countNotepadMass++;
+                    j++;
 
 
 
