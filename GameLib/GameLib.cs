@@ -18,6 +18,8 @@ namespace GameLib
             var rndNumber = new Random();
             int n = rndNumber.Next(40, 140);
             return n;
+
+            //
         }
     }
 
