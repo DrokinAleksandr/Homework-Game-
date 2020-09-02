@@ -90,9 +90,11 @@ namespace GameLib
                     }
                     flag = false;
                 }
+                n++;
                 numerUberCheat = n;
+
             }
-            return numerUberCheat++;
+            return numerUberCheat;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Homework_Warehouse_
         static void Main(string[] args)
         {
             
-            int j,cheatPlayer, basketWeight, simplePlayer, notepadPlayer, uberPlayer, uberNumber = 40, countNotepadMass = 0, ubercheatPlayer;
+            int mainCounter, cheatPlayer, basketWeight, simplePlayer, notepadPlayer, uberPlayer, uberNumber = 40, countNotepadMass = 0, ubercheatPlayer;
             bool continueProg;
 
             continueProg = true;
@@ -26,72 +26,69 @@ namespace Homework_Warehouse_
             {
                 int[] mainMass = new int[200];
                 int[] notepadMass = new int[200];
-                for ( j = 0; j < 100; j++)
+                for ( mainCounter = 0; mainCounter < 100; mainCounter++)
                 {   
 
                     //Simple Player
                     simplePlayer = Players.SimplePlayer();
                     if (basketWeight == simplePlayer)
                     {
-                        Console.WriteLine("Simple Player Win.");
+                        Console.WriteLine("Vasya (Simple Player) Win.");
                         Console.ReadKey();
                         continueProg = false;
                         break;
                     }
-                    mainMass[j] = simplePlayer;
-                    j++;
+                    mainMass[mainCounter] = simplePlayer;
+                    mainCounter++;
 
                     //Uber Player
                     uberPlayer = Players.UberPlayer(uberNumber);
                     if (basketWeight == uberPlayer)
                     {
-                        Console.WriteLine("Uber Player Win.");
+                        Console.WriteLine("Kolya (Uber Player) Win.");
                         Console.ReadKey();
                         continueProg = false;
                         break;
                     }
-                    mainMass[j] = uberPlayer;
+                    mainMass[mainCounter] = uberPlayer;
                     uberNumber++;
-                    j++;
+                    mainCounter++;
 
                     //Notepad Player
-                  
                     notepadPlayer = Players.notepadPlayer(notepadMass); 
                     if (basketWeight == notepadPlayer)
                     {
-                        Console.WriteLine("Notepad Player Win.");
+                        Console.WriteLine("Gena (Notepad Player) Win.");
                         Console.ReadKey();
                         continueProg = false;
                         break;
                     }
                     notepadMass[countNotepadMass] = notepadPlayer;
-                    mainMass[j] = notepadPlayer;
+                    mainMass[mainCounter] = notepadPlayer;
                     countNotepadMass++;
-                    j++;
+                    mainCounter++;
 
                     //Cheat Player
                     cheatPlayer = Players.cheatPlayer(mainMass);
                     if (basketWeight == cheatPlayer)
                     {
-                        Console.WriteLine("Cheat Player Win.");
-                        Console.ReadKey();
+                        Console.WriteLine("Vova (Cheat Player) Win.");
                         continueProg = false;
                         break;
                     }
-                    mainMass[j] = cheatPlayer;
-                    j++;
+                    mainMass[mainCounter] = cheatPlayer;
+                    mainCounter++;
 
                     //Uber Cheat Player
                     ubercheatPlayer = Players.ubercheatPlayer(mainMass, uberNumber);
                     if (basketWeight == ubercheatPlayer)
                     {
-                        Console.WriteLine("UberCheat Player Win.");
-                       // Console.ReadKey();
+                        Console.WriteLine("Fedya (UberCheat Player) Win.");
                         continueProg = false;
                         break;
                     }
-                    mainMass[j] = ubercheatPlayer;
-                    j++;
+                    mainMass[mainCounter] = ubercheatPlayer;
+                    mainCounter++;
                 }
             }
             Console.ReadKey();
