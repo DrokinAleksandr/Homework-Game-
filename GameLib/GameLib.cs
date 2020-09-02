@@ -23,34 +23,77 @@ namespace GameLib
         }
         public static int notepadPlayer(int[] mn)
         {
-            int nDayOff = 0,numerNotepad=0;
+            int numerNotepad=0;
             bool flag = true;
-            //var rndNumber = new Random();
-            //int n = rndNumber.Next(40, 140
-           while (flag == true)
-           {
-                for (int i = 0; i < mn.Length||flag!=false; ++i)
+            while (flag == true)
+            {
+                var rndNumber = new Random();
+                int n = rndNumber.Next(40, 140);
+                for (int i = 0; i <200; ++i)
                 {
-                    var rndNumber = new Random();
-                    int n = rndNumber.Next(40, 140);
-                    if (mn[i] == n || mn[i]!=0)
+                    if (mn[i] == n )
                     {
-                   
-                        flag = false;
-                    break;
+                        flag = true;
+                        break;
                     }
-                    numerNotepad = n;
-                    break;
+                    if (mn[i] == 0)
+                    {
+                        flag = false;
+                        break;
+                    }
+                    flag = false;
+                    
                 }
-                
+                numerNotepad = n;
             }
-            
                 return numerNotepad;
-
         }
+        public static int cheatPlayer(int[] mn)
+        {
+            
+            int numerCheat = 0;
+            bool flag = true;
+            
+            while (flag == true)
+            {
+             var rndNumber = new Random();
+             int n = rndNumber.Next(40, 140);
 
+                for (int i = 0; i < 200; ++i)
+                {
+                    if (mn[i] == n)
+                    {
+                        flag = true;
+                        break;
+                    }
+                   flag = false;
+                }
+                numerCheat = n;
+            }
+            return numerCheat;
+        }
+        public static int ubercheatPlayer(int[] mn, int n)
+        {
+            
+            int numerUberCheat = 0;
+            bool flag = true;
+            while (flag == true)
+            {
+                for (int i = 0; i < 200; ++i)
+                {
+                   
+                    if (mn[i] == n )
+                    {
 
-
+                        flag = true;
+                        break;
+                    }
+                    flag = false;
+                }
+                numerUberCheat = n;
+            }
+            return numerUberCheat++;
+        }
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,89 +13,88 @@ namespace Homework_Warehouse_
     {
         static void Main(string[] args)
         {
-            String continueProg, expirationDate;
-            int cheatPlayer, basketWeight, simplePlayer, notepadPlayer, uberPlayer, uberNumber = 40, countNotepadMass = 0;
-            double priceProduct;
-           
-            continueProg = "yes";
-            while (continueProg == "yes")
+            
+            int j,cheatPlayer, basketWeight, simplePlayer, notepadPlayer, uberPlayer, uberNumber = 40, countNotepadMass = 0, ubercheatPlayer;
+            bool continueProg;
+
+            continueProg = true;
+            Console.WriteLine("=========Game=========");
+            Console.Write("Write basket number: ");
+            basketWeight = CheckInt();
+
+            while (continueProg == true)
             {
-                int[] mainMass = new int[400];
-                for (int j = 0; j < 400; j++)
-                {
-                    //matrix[j] = value;
+                int[] mainMass = new int[200];
+                int[] notepadMass = new int[200];
+                for ( j = 0; j < 100; j++)
+                {   
 
-                    Console.WriteLine("=========Game=========");
-                    Console.WriteLine("Write basket number:");
-                    basketWeight = CheckInt();
-
+                    //Simple Player
                     simplePlayer = Players.SimplePlayer();
                     if (basketWeight == simplePlayer)
                     {
-                        
                         Console.WriteLine("Simple Player Win.");
                         Console.ReadKey();
+                        continueProg = false;
                         break;
                     }
                     mainMass[j] = simplePlayer;
                     j++;
 
+                    //Uber Player
                     uberPlayer = Players.UberPlayer(uberNumber);
-
                     if (basketWeight == uberPlayer)
                     {
-                        
                         Console.WriteLine("Uber Player Win.");
                         Console.ReadKey();
+                        continueProg = false;
                         break;
                     }
                     mainMass[j] = uberPlayer;
                     uberNumber++;
                     j++;
 
-
-                    int[] notepadMass = new int[400];
+                    //Notepad Player
+                  
                     notepadPlayer = Players.notepadPlayer(notepadMass); 
-                    
-
                     if (basketWeight == notepadPlayer)
                     {
-                        
                         Console.WriteLine("Notepad Player Win.");
                         Console.ReadKey();
+                        continueProg = false;
                         break;
                     }
-                    notepadMass[countNotepadMass] = uberPlayer;
-                    mainMass[j] = uberPlayer;
+                    notepadMass[countNotepadMass] = notepadPlayer;
+                    mainMass[j] = notepadPlayer;
                     countNotepadMass++;
                     j++;
 
-
-                    int[] notepadMass = new int[400];
-                    cheatPlayer = Players.notepadPlayer(notepadMass);
-
-
-                    if (basketWeight == notepadPlayer)
+                    //Cheat Player
+                    cheatPlayer = Players.cheatPlayer(mainMass);
+                    if (basketWeight == cheatPlayer)
                     {
-
-                        Console.WriteLine("Notepad Player Win.");
+                        Console.WriteLine("Cheat Player Win.");
                         Console.ReadKey();
+                        continueProg = false;
                         break;
                     }
-                    notepadMass[countNotepadMass] = uberPlayer;
-                    mainMass[j] = uberPlayer;
-                    countNotepadMass++;
+                    mainMass[j] = cheatPlayer;
                     j++;
 
-
-
-
-
+                    //Uber Cheat Player
+                    ubercheatPlayer = Players.ubercheatPlayer(mainMass, uberNumber);
+                    if (basketWeight == ubercheatPlayer)
+                    {
+                        Console.WriteLine("UberCheat Player Win.");
+                       // Console.ReadKey();
+                        continueProg = false;
+                        break;
+                    }
+                    mainMass[j] = ubercheatPlayer;
+                    j++;
                 }
-
-             
             }
-            //Console.ReadKey();
+            Console.ReadKey();
         }
 
         static int CheckInt()
