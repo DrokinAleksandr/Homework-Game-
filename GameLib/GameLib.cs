@@ -10,7 +10,7 @@ namespace GameLib
     {
         public static int UberPlayer(int number)
         {
-            int n = number++;
+            int n = number;
             return n;
         }
         public static int SimplePlayer()
@@ -90,8 +90,12 @@ namespace GameLib
                     }
                     flag = false;
                 }
-                n++;
-                numerUberCheat = n;
+                if (flag == true)
+                {
+                    n++;
+                    numerUberCheat = n;
+                }
+                
 
             }
             return numerUberCheat;

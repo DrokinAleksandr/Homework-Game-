@@ -51,7 +51,7 @@ namespace Homework_Warehouse_
                         break;
                     }
                     mainMass[mainCounter] = uberPlayer;
-                    uberNumber++;
+                    //uberNumber++;
                     mainCounter++;
 
                     //Notepad Player
@@ -88,7 +88,7 @@ namespace Homework_Warehouse_
                         break;
                     }
                     mainMass[mainCounter] = ubercheatPlayer;
-                    mainCounter++;
+                    uberNumber++;
                 }
             }
             Console.ReadKey();
